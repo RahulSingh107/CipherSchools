@@ -1,8 +1,7 @@
 import { Component } from "react";
+import ToDoScreen from "./screens/ToDoScreen";
 
-class App extends Component {
-  render() {
-    return <h1>THis is a todo list</h1>;
-  }
-}
+const App = () => {
+  return <ToDoScreen />;
+};
 export default App;
