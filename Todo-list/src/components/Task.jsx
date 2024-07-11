@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-import { formateDate } from "../assets/utils/DateUtil";
-const Task = ({ task: { Title, Description, createdDate } }) => {
+import { formatDate } from "../assets/utils/DateUtil";
+const Task = ({ task: { title, description, createdDate } }) => {
   return (
     <div className="card">
       <div className="content">
-        <div className="header">{Title}</div>
-        <div className="meta">{formateDate(createdDate)}</div>
-        <div className="description">{Description}</div>
+        <div className="header">{title}</div>
+        <div className="meta">{formatDate(createdDate)}</div>
+        <div className="description">{description}</div>
       </div>
       <div className="extra content">
         <div className="ui two buttons">
@@ -18,24 +17,3 @@ const Task = ({ task: { Title, Description, createdDate } }) => {
   );
 };
 export default Task;
-=======
-import { formateDate } from "../assets/utils/DateUtil";
-const Task = ({ task: { Title, Description, createdDate } }) => {
-  return (
-    <div className="card">
-      <div className="content">
-        <div className="header">{Title}</div>
-        <div className="meta">{formateDate(createdDate)}</div>
-        <div className="description">{Description}</div>
-      </div>
-      <div className="extra content">
-        <div className="ui two buttons">
-          <div className="ui basic blue button">Edit</div>
-          <div className="ui basic red button">Delete</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-export default Task;
->>>>>>> d7e358a1b0750e3536ebd6e570398af7cadb9f66

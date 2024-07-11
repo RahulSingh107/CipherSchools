@@ -1,20 +1,33 @@
-const AddTask = () => {
+import { useState } from "react";
+const AddTask = ({ onSubmit }) => {
+  const [task, setTask] = useState({
+    title: "",
+    description: "",
+  });
   let handleInputChange = (e) => {
-    console.log(e.target.value);
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value,
+    });
+  };
+  let onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(task);
+    onSubmit(task);
   };
   return (
     <>
       <h3 className="ui heading center">Add new Task</h3>
       <div className="ui form">
-        <form>
+        <form onSubmit={onFormSubmit}>
           <div className="field">
             <label>Title</label>
             <input
               type="text"
-              spellCheck="false"
-              data-ms-editor="true"
               placeholder="Task Title"
               name="title"
+              onChange={handleInputChange}
+              value={task.title}
             />
           </div>
           <div className="field">
@@ -23,9 +36,13 @@ const AddTask = () => {
               rows="2"
               placeholder="Task Description"
               name="description"
+              onChange={handleInputChange}
+              value={task.description}
             />
           </div>
-          <button className="ui primary button">Save</button>
+          <button type="submit" className="ui primary button">
+            Save
+          </button>
         </form>
       </div>
     </>

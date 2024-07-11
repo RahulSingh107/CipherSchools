@@ -6,4 +6,4 @@ const dateFormatter = new Intl.DateTimeFormat("en-IN", {
   month: "short",
   date: "2-digit"
 });
-export const formateDate = (date) => dateFormatter.format(date);
+export const formatDate = (date) => dateFormatter.format(date);

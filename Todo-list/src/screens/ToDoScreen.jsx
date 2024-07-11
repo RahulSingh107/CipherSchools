@@ -1,10 +1,12 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import Task from "../components/Task";
 import AddTask from "../components/AddTask";
 
 const ToDoScreen = () => {
   const [taskList, setTaskList] = useState([]);
+  let addNewTask = (task) => {
+    setTaskList([...taskList, { ...task, createdDate: new Date() }]);
+  };
   return (
     <>
       <div className="screen">
@@ -15,8 +17,8 @@ const ToDoScreen = () => {
               setTaskList([
                 ...taskList,
                 {
-                  Title: "Go to college",
-                  Description: "college going is good",
+                  Title: "This is a task",
+                  Description: "THis is a task",
                   createdDate: new Date(),
                 },
               ]);
@@ -27,57 +29,55 @@ const ToDoScreen = () => {
           </button>
           <section>
             <div className="ui cards">
-              {taskList.map((task) => (
-                <Task task={task} />
+              {taskList.map((task, index) => (
+                <Task task={task} key={index} />
               ))}
             </div>
           </section>
         </div>
-        <AddTask />
+        <AddTask onSubmit={addNewTask} />
       </div>
     </>
   );
 };
 export default ToDoScreen;
-=======
-import { useState } from "react";
-import Task from "../components/Task";
-import AddTask from "../components/AddTask";
+// import { useState } from "react";
+// import Task from "../components/Task";
+// import AddTask from "../components/AddTask";
 
-const ToDoScreen = () => {
-  const [taskList, setTaskList] = useState([]);
-  return (
-    <>
-      <div className="screen">
-        <h1 className="ui heading center"> ToDo List</h1>
-        <div>
-          <button
-            onClick={(e) => {
-              setTaskList([
-                ...taskList,
-                {
-                  Title: "Go to college",
-                  Description: "college going is good",
-                  createdDate: new Date(),
-                },
-              ]);
-            }}
-            className="ui secondary button"
-          >
-            Add Task
-          </button>
-          <section>
-            <div className="ui cards">
-              {taskList.map((task) => (
-                <Task task={task} />
-              ))}
-            </div>
-          </section>
-        </div>
-        <AddTask />
-      </div>
-    </>
-  );
-};
-export default ToDoScreen;
->>>>>>> d7e358a1b0750e3536ebd6e570398af7cadb9f66
+// const ToDoScreen = () => {
+//   const [taskList, setTaskList] = useState([]);
+//   return (
+//     <>
+//       <div className="screen">
+//         <h1 className="ui heading center"> ToDo List</h1>
+//         <div>
+//           <button
+//             onClick={(e) => {
+//               setTaskList([
+//                 ...taskList,
+//                 {
+//                   Title: "Go to college",
+//                   Description: "college going is good",
+//                   createdDate: new Date(),
+//                 },
+//               ]);
+//             }}
+//             className="ui secondary button"
+//           >
+//             Add Task
+//           </button>
+//           <section>
+//             <div className="ui cards">
+//               {taskList.map((task) => (
+//                 <Task task={task} />
+//               ))}
+//             </div>
+//           </section>
+//         </div>
+//         <AddTask />
+//       </div>
+//     </>
+//   );
+// };
+// export default ToDoScreen;
