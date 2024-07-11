@@ -16,7 +16,7 @@ const AddTask = ({ onSubmit }) => {
     onSubmit(task);
   };
   return (
-    <>
+    <section className="screen">
       <h3 className="ui heading center">Add new Task</h3>
       <div className="ui form">
         <form onSubmit={onFormSubmit}>
@@ -45,7 +45,7 @@ const AddTask = ({ onSubmit }) => {
           </button>
         </form>
       </div>
-    </>
+    </section>
   );
 };
 export default AddTask;
