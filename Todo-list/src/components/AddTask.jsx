@@ -1,5 +1,9 @@
-import { useState } from "react";
-const AddTask = ({ onSubmit }) => {
+import { useContext, useState } from "react";
+import TaskContext from "./Context/TaskContext";
+import { useNavigate } from "react-router-dom";
+const AddTask = () => {
+  const { addNewTask } = useContext(TaskContext);
+  const navigate = useNavigate();
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -10,10 +14,13 @@ const AddTask = ({ onSubmit }) => {
       [e.target.name]: e.target.value,
     });
   };
+  //creating a submission function that will add new task as well as navigate from one component to another
   let onFormSubmit = (e) => {
     e.preventDefault();
     console.log(task);
-    onSubmit(task);
+    addNewTask(task);
+    setTask([]);
+    navigate("/");
   };
   return (
     <section className="screen">
@@ -28,6 +35,7 @@ const AddTask = ({ onSubmit }) => {
               name="title"
               onChange={handleInputChange}
               value={task.title}
+              required
             />
           </div>
           <div className="field">

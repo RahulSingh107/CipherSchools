@@ -1,5 +1,9 @@
+import { useContext, useState } from "react";
 import { formatDate } from "../assets/utils/DateUtil";
-const Task = ({ task: { title, description, createdDate } }) => {
+import TaskContext from "./Context/TaskContext";
+const Task = ({ task: { title, description, createdDate, taskId } }) => {
+  const { deleteTask } = useContext(TaskContext);
+  const [isEditing, setIsEditing] = useState(false);
   return (
     <div className="card">
       <div className="content">
@@ -10,7 +14,12 @@ const Task = ({ task: { title, description, createdDate } }) => {
       <div className="extra content">
         <div className="ui two buttons">
           <div className="ui basic blue button">Edit</div>
-          <div className="ui basic red button">Delete</div>
+          <div
+            className="ui basic red button"
+            onClick={() => deleteTask(taskId)}
+          >
+            Delete
+          </div>
         </div>
       </div>
     </div>
