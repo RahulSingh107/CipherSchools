@@ -14,6 +14,7 @@ const AddTask = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   //creating a submission function that will add new task as well as navigate from one component to another
   let onFormSubmit = (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ const AddTask = () => {
               name="description"
               onChange={handleInputChange}
               value={task.description}
+              required
             />
           </div>
           <button type="submit" className="ui primary button">
