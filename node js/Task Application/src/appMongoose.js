@@ -5,7 +5,7 @@ console.log("Connecting to MongoDB");
 async function connectDb() {
     try {
         await connect(`${MONGO_URL}/${DB_NAME}`)
-        console.log("connected");
+        console.log("connected to Db");
     }
     catch (err) {
         console.error(err);
