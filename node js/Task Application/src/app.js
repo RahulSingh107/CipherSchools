@@ -1,10 +1,11 @@
 require("./appMongoose")
 const Task = require("./model/Task")
 const express = require('express');
+const userRouter = require("./routes/user-route")
 const app = express();
 
 app.use(express.json()); // this will help us in reading the json body in the thunder client
-
+app.use("/user", userRouter)
 app.get('/',
     (req, res) => {
         res.send('Hello, World!');
