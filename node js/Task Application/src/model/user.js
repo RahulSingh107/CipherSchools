@@ -1,6 +1,8 @@
 //component to create the user model
 const { model, Schema } = require("mongoose")
 const { isEmail } = require("validator")
+const bcrypt = require("bcrypt");
+const { encryptPassword, checkPassword } = require("../bcrypt");
 const UserSchema = new Schema({
     name: { type: String, trim: true, required: true },
     email: {
@@ -44,7 +46,8 @@ UserSchema.statics.findByEmailAndPasswordForAuth = async (email, password) => {
         if (!user) {
             throw new Error("Invalid email");
         }
-        if (password !== user.password) {
+        const isMatch = await checkPassword(password, user.password);
+        if (!isMatch) {
             throw new Error("Invalid password");
         }
 
@@ -59,6 +62,15 @@ UserSchema.statics.findByEmailAndPasswordForAuth = async (email, password) => {
     }
 
 }
+// this function will encrypt the password just before it is put in the data base (.pre means before)
+UserSchema.pre("save", async function (next) {
+    const user = this;
+    if (user.modifiedPaths().includes("password")) {
+        user.password = await encryptPassword(user.password)
+
+    }
+    next();
+});
 const User = model("User", UserSchema);
 
 module.exports = User;
