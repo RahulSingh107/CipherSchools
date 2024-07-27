@@ -2,6 +2,7 @@ require("./appMongoose")
 const Task = require("./model/Task")
 const express = require('express');
 const userRouter = require("./routes/user-route")
+const addMiddleware = require('./middleware/auth-middleware')
 const app = express();
 
 app.use(express.json()); // this will help us in reading the json body in the thunder client
@@ -48,7 +49,7 @@ app.post("/add-task", async (req, res) => {
     }
 });
 //read operation
-app.get("/get-task", async (req, res) => {
+app.get("/get-task", addMiddleware, async (req, res) => {
     const taskList = await Task.find();
     return res.status(200).send(taskList);
 })

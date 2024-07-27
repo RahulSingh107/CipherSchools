@@ -45,7 +45,7 @@ const deleteUser = async (req, res) => {
             message: `Delete failed! User with Id ${req.params.id}
          was not found` })
     }
-    console.info(`Delete Success: User with ID ${req.params.id} was deleted`)
+    console.info(`Delete Success: User with ID ${user._id} was deleted`)
     return res.status(200).send({ message: 'User deleted successfully' })
 
 }
